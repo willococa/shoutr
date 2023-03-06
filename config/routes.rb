@@ -3,7 +3,18 @@ Rails.application.routes.draw do
     root  to: "dashboards#show", as: :signed_in_root   
   end
   root to: "homes#show"
-  resources :shouts, only: [:create, :show]
+  resources :shouts, only: [:create, :show] do
+    #here a member route is created because it feels more like an acttion of a shout
+    #than a nested resource 
+    #so it will create aroute like like_shout_path
+    #instead of shout_like_path
+    member do
+      post  "like"=>"likes#create"
+    end
+    member do
+      delete  "unlike"=>"likes#destroy"
+    end
+  end
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, only: [:create]
 
