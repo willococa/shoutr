@@ -3,6 +3,7 @@ class UsersController < Clearance::UsersController
 		@user = User.find_by(username: params[:id])
 		@shouts = @user.shouts
 	end
+
 	def new
 		@user =  User.new
 	end
