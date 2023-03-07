@@ -14,5 +14,9 @@ class User < ApplicationRecord
   def liked?(shout)
     liked_shout_ids.include?(shout.id)
   end
+  #this is so every time we link to a user it goes /users/:username  instead of /users/:id
+  def to_param
+    username
+  end
 
 end

@@ -21,9 +21,4 @@ class SessionsController < Clearance::SessionsController
 	def email_or_username
 		params[:session][:email_or_username]
 	end
-	class Guest
-		def email
-			""
-		end
-	end
 end

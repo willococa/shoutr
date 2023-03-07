@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     #instead of shout_like_path
     member do
       post  "like"=>"likes#create"
-    end
-    member do
       delete  "unlike"=>"likes#destroy"
     end
   end
