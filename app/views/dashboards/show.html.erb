@@ -3,10 +3,4 @@
 </h1>
 <%= render :partial => "shouts/text_shout_form" %>
 <%= render :partial => "shouts/photo_shout_form" %>
-<%= shout_form_for(TextShout) do |form|  %>
-	<%= form.text_field :body, placeholder: "Shout here!", required: true %>
-<% end  %>
-<%= shout_form_for(PhotoShout) do |form|  %>
-		<%= form.file_field :image, required: true %>
-<% end  %>
-<%= render @shouts %>
+<%= render @timeline.shouts %>
