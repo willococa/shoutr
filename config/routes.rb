@@ -3,7 +3,12 @@ Rails.application.routes.draw do
     root  to: "dashboards#show", as: :signed_in_root   
   end
   root to: "homes#show"
-  resources :shouts, only: [:create, :show] do
+  #next sets different routes to the same controller action to act diferently...
+  #according to Shout type, this unatacches the controller knowleadge of the type..
+  # of shouts we use and sets this configuration to here where it's more maneagable
+  post "text_shouts"=>"shouts#create", defaults:{content_type: TextShout}
+  post "photo_shouts"=>"shouts#create", defaults:{content_type: PhotoShout}
+  resources :shouts, only: [:show] do
     #here a member route is created because it feels more like an acttion of a shout
     #than a nested resource 
     #so it will create aroute like like_shout_path
