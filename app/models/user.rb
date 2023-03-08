@@ -14,6 +14,10 @@ class User < ApplicationRecord
     class_name: "FollowingRelationship",
     dependent: :destroy
   has_many :followers, through: :follower_relationships
+
+  def timeline_shouts
+    Shout.where(user_id: followed_user_ids + [id])
+  end
   def follow(user)
     followed_users <<  user
   end
