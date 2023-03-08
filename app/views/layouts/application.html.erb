@@ -16,12 +16,13 @@
     <% else %>
       <%= link_to 'Sign in', sign_in_path %>
     <% end %>
-    <%= yield %>
     
     <div id="flash">
       <% flash.each do |key, value| %>
         <div class="flash <%= key %>"><%= value %></div>
       <% end %>
     </div>
+    <%= render "search"  %>
+    <%= yield %>
   </body>
 </html>

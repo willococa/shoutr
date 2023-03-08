@@ -3,6 +3,11 @@ Rails.application.routes.draw do
     root  to: "dashboards#show", as: :signed_in_root   
   end
   root to: "homes#show"
+  # the search is created as resource ad not resources so we can do..
+  #   /search?search[term]=origami instead of /searches/:id wich will force us to set the id 
+  #   from the from ourselves
+  resource :search, only: [:show]
+
   #next sets different routes to the same controller action to act diferently...
   #according to Shout type, this unatacches the controller knowleadge of the type..
   # of shouts we use and sets this configuration to here where it's more maneagable

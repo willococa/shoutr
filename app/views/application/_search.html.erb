@@ -1,0 +1,14 @@
+<!-- this file has been created inside the application folder because when the rais engine looks for
+a template it searches based in the conroller name like so: 
+"DashboardsController" => views/dashboards folder, so then if we create a views/application folder
+the engine will look the search template inside the dashboard folder *where it's being called
+and if it doesn't find  it then it'll look in a hierarchichal controller. as the DashboardController extends ApplicationController, then creating an "aplication" folder will make it so it serves as a general partial folder for all controller views that inherit from applicationcontroller  -->
+
+<!-- now having created a form with a :search simbol makes it so that if the instance variable "search" exists, it will prepopulate the form with any of the values that variable contains,
+	in this case the @search variable contains a term value inside
+
+ -->
+<%= form_for :search, url: search_path, method: :get do |form| %>
+	<%= form.text_field :term, placeholder: "Search here" %>
+	<%= form.submit "Search" %>
+<% end %>
