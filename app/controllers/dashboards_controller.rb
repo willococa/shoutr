@@ -1,6 +1,5 @@
 class DashboardsController < ApplicationController
 	def show
-		@timeline = Timeline.new(
-			current_user.followed_user_ids + current_user.id )
+		@dashboard = Dashboard.new(current_user)
 	end
 end

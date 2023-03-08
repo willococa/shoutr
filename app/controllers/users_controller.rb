@@ -1,7 +1,7 @@
 class UsersController < Clearance::UsersController
 	def show
 		@user = User.find_by(username: params[:id])
-		@shouts = @user.shouts
+		@timeline = Timeline.new([@user])
 	end
 
 	def new
